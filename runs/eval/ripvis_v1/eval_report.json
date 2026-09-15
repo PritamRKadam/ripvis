@@ -1,0 +1,18 @@
+{
+  "official_metrics": {
+    "box_map50": 0.995,
+    "box_map": 0.9916045343137254,
+    "box_precision": 1.0,
+    "box_recall": 1.0,
+    "seg_map50": 0.995,
+    "seg_map": 0.9745980177635248,
+    "seg_precision": 1.0,
+    "seg_recall": 1.0
+  },
+  "custom_metrics": {
+    "mean_mask_iou": 0.6733149389042176,
+    "mean_precision": 0.6733680227057179,
+    "mean_recall": 0.999882931397682,
+    "f2_score": 0.9114872364038983
+  }
+}

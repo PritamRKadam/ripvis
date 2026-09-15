@@ -25,15 +25,8 @@ Thumbs.db
 # VS Code
 .vscode/
 
-# RipVIS generated outputs and datasets
+# RipVIS generated datasets and large videos
 data/
-runs/
-models/
-*.pt
-*.pth
-*.ckpt
-*.bin
-*.onnx
 *.mp4
 *.ogv
 *.avi

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "scenario_01_breaststroke_calm_water",
+    "title": "Swimmer in Calm Coastal Water Doing Breaststroke",
+    "seed": 404,
+    "prompt": "(a woman swimming breaststroke in the water:1.5), (visible human swimmer:1.4), top-down aerial drone shot of a person swimming in calm clear blue ocean, delicate circular ripples, clear calm water surface, swimming motion, serene sea",
+    "mp4": "runs/stage3_video_generation_v2/scenario_01_breaststroke_calm_water/scenario_01_breaststroke_calm_water.mp4",
+    "webp": "runs/stage3_video_generation_v2/scenario_01_breaststroke_calm_water/scenario_01_breaststroke_calm_water.webp",
+    "keyframes": "runs/stage3_video_generation_v2/scenario_01_breaststroke_calm_water/scenario_01_breaststroke_calm_water_keyframes.jpg"
+  },
+  {
+    "id": "scenario_02_floating_supine_calm_sea",
+    "title": "Person Floating Supine on Calm Ocean Surface",
+    "seed": 777,
+    "prompt": "(a person floating peacefully on back:1.5), (visible human swimmer floating:1.4), top-down aerial drone shot of a person floating on calm blue ocean water, arms and legs outstretched, delicate water ripples, calm water surface, serene crystal clear sea",
+    "mp4": "runs/stage3_video_generation_v2/scenario_02_floating_supine_calm_sea/scenario_02_floating_supine_calm_sea.mp4",
+    "webp": "runs/stage3_video_generation_v2/scenario_02_floating_supine_calm_sea/scenario_02_floating_supine_calm_sea.webp",
+    "keyframes": "runs/stage3_video_generation_v2/scenario_02_floating_supine_calm_sea/scenario_02_floating_supine_calm_sea_keyframes.jpg"
+  },
+  {
+    "id": "scenario_03_freestyle_swimmer_calm_ocean",
+    "title": "Freestyle Swimmer in Calm Coastal Waters",
+    "seed": 888,
+    "prompt": "(an athletic swimmer swimming freestyle:1.5), (visible human swimmer:1.4), top-down aerial drone view of a person swimming through calm clear blue coastal water, rhythmic arm strokes and gentle flutter kicks, subtle trailing ripples, calm sea, photorealistic",
+    "mp4": "runs/stage3_video_generation_v2/scenario_03_freestyle_swimmer_calm_ocean/scenario_03_freestyle_swimmer_calm_ocean.mp4",
+    "webp": "runs/stage3_video_generation_v2/scenario_03_freestyle_swimmer_calm_ocean/scenario_03_freestyle_swimmer_calm_ocean.webp",
+    "keyframes": "runs/stage3_video_generation_v2/scenario_03_freestyle_swimmer_calm_ocean/scenario_03_freestyle_swimmer_calm_ocean_keyframes.jpg"
+  },
+  {
+    "id": "scenario_04_treading_water_coastal_channel",
+    "title": "Swimmer Treading Water in Calm Coastal Current",
+    "seed": 999,
+    "prompt": "(a person treading water:1.5), (visible human swimmer:1.4), overhead drone shot of a swimmer treading water in calm coastal ocean channel, head and shoulders above water, gentle undulating ripples, clear blue sea surface, peaceful calm water",
+    "mp4": "runs/stage3_video_generation_v2/scenario_04_treading_water_coastal_channel/scenario_04_treading_water_coastal_channel.mp4",
+    "webp": "runs/stage3_video_generation_v2/scenario_04_treading_water_coastal_channel/scenario_04_treading_water_coastal_channel.webp",
+    "keyframes": "runs/stage3_video_generation_v2/scenario_04_treading_water_coastal_channel/scenario_04_treading_water_coastal_channel_keyframes.jpg"
+  },
+  {
+    "id": "scenario_05_swimmer_gliding_gentle_ripples",
+    "title": "Swimmer Gliding with Gentle Ripples",
+    "seed": 42,
+    "prompt": "(a person swimming in calm water:1.5), (visible swimmer in ocean:1.4), top-down aerial drone view of a swimmer gliding across calm clear coastal water, gentle expanding ripple rings, serene ocean surface, natural fluid dynamics, realistic swimmer",
+    "mp4": "runs/stage3_video_generation_v2/scenario_05_swimmer_gliding_gentle_ripples/scenario_05_swimmer_gliding_gentle_ripples.mp4",
+    "webp": "runs/stage3_video_generation_v2/scenario_05_swimmer_gliding_gentle_ripples/scenario_05_swimmer_gliding_gentle_ripples.webp",
+    "keyframes": "runs/stage3_video_generation_v2/scenario_05_swimmer_gliding_gentle_ripples/scenario_05_swimmer_gliding_gentle_ripples_keyframes.jpg"
+  }
+]

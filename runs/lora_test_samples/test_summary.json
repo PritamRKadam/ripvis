@@ -1,0 +1,11 @@
+{
+  "adapter_path": "models/water_swimmer_lora/final_lora",
+  "test_prompts": [
+    "aerial view, water surface, turbulent wake: top-down drone view of a swimmer in coastal ocean water, foamy rip current wake, natural sunlight, photorealistic",
+    "underwater, caustics, water surface: a person snorkeling over a rocky coral reef, volumetric sunbeams piercing clear turquoise water, dancing caustics",
+    "splash, ripples, turbulent wake: a person diving into deep blue water with explosive splash droplets and expanding circular ripples, 4k",
+    "water surface, ripples, caustics: overhead drone shot at 30m altitude of a person floating supine in calm ocean swells with sunlight glitter"
+  ],
+  "grid_path": "runs/lora_test_samples/water_lora_trigger_samples.png",
+  "status": "VALIDATION_PASSED"
+}

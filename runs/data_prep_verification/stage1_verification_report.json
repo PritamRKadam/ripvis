@@ -1,0 +1,28 @@
+{
+  "splits": {
+    "train_count": 113,
+    "val_count": 28,
+    "total_count": 141,
+    "train_ratio": 80.1,
+    "val_ratio": 19.9,
+    "overlap_count": 0
+  },
+  "annotations": {
+    "total_annotated": 141,
+    "missing_aspects": 0,
+    "all_aspects_valid": true
+  },
+  "tensors": {
+    "latent_stats": {
+      "total": 141,
+      "valid_shape": 141,
+      "nan_inf": 0
+    },
+    "embed_stats": {
+      "total": 141,
+      "valid_shape": 141,
+      "nan_inf": 0
+    }
+  },
+  "verification_status": "ALL_CHECKS_PASSED"
+}
