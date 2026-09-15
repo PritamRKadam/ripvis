@@ -1,0 +1,55 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Video Generation Configuration: AnimateDiff + Water-Swimmer LoRA (Stage 3)
+# ──────────────────────────────────────────────────────────────────────────────
+
+pipeline:
+  base_model: "runwayml/stable-diffusion-v1-5"
+  motion_adapter: "guoyww/animatediff-motion-adapter-v1-5-2"
+  lora_dir: "models/water_swimmer_lora/final_lora"
+  lora_weight_name: "adapter_model.safetensors"
+  lora_scale: 0.85
+
+generation:
+  num_frames: 16
+  fps: 8
+  height: 512
+  width: 512
+  guidance_scale: 7.5
+  num_inference_steps: 25
+  scheduler: "ddim"  # optimized for AnimateDiff v1-5-2
+  seed: 42
+
+scenarios:
+  - id: "scenario_01_freestyle_swimmer_calm_rip"
+    title: "Freestyle Swimmer in Calm Coastal Rip Channel"
+    prompt: "(a human swimmer in the water:1.4), (person swimming freestyle:1.3), top-down aerial drone shot of a swimmer navigating a calm coastal rip current channel, gentle water ripples, subtle wake, calm sea surface, clear turquoise ocean, visible arms and swimming strokes"
+    seed: 101
+
+  - id: "scenario_02_floating_treading_caustics"
+    title: "Person Floating and Treading Water with Caustics"
+    prompt: "(a person floating on water surface:1.4), (swimmer treading water:1.3), top-down aerial drone view of a visible person floating peacefully in calm coastal ocean water, dancing sunlight caustics on shallow seabed, subtle water ripples, serene turquoise water, realistic swimmer"
+    seed: 202
+
+  - id: "scenario_03_breaststroke_calm_sea"
+    title: "Swimmer Performing Breaststroke in Calm Sea"
+    prompt: "(a swimmer doing breaststroke:1.4), (visible human swimmer:1.3), high aerial drone view of a person swimming breaststroke across calm ocean water, radiating delicate ripple rings, smooth water surface, clear blue sea, visible head and arms"
+    seed: 303
+
+  - id: "scenario_04_coastal_swimmer_sandbar"
+    title: "Swimmer Near Coastal Sandbar Channel"
+    prompt: "(aerial view of a lone swimmer:1.4), (person swimming in water:1.3), top-down drone shot of a visible human swimmer in a calm shallow coastal channel between sandbars, gentle ripples, calm water surface, clear sea, natural swimming motion"
+    seed: 404
+
+  - id: "scenario_05_gentle_wake_swimmer"
+    title: "Swimmer Gliding with Subtle Hydrodynamic Wake"
+    prompt: "(a person swimming in the ocean:1.4), (human swimmer in water:1.3), overhead drone footage of an athletic swimmer gliding through calm turquoise water, subtle trailing wake, gentle capillary ripples, calm ocean, clear water surface, visible swimming body"
+    seed: 505
+
+negative_prompt: "(empty water:1.5), (no people:1.5), (no swimmers:1.5), empty sea, uninhabited ocean, nobody, violent waves, storm, rough sea, extreme turbulence, raging white foam, breaking surf, crashing waves, cartoon, 3d render, illustration, bad anatomy, deformed limbs, blurry, low quality"
+
+output:
+  output_dir: "runs/stage3_video_generation_v2"
+  save_frames: true
+  save_mp4: true
+  save_gif: true
+  save_webp: true

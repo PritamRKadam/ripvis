@@ -1,0 +1,50 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# Diffusion Training Configuration: Rip Currents & Swimmers (v2 Optimized)
+# ──────────────────────────────────────────────────────────────────────────────
+
+model:
+  pretrained_model_name_or_path: "runwayml/stable-diffusion-v1-5"
+  revision: null
+  variant: "fp16"
+  resolution: 512
+  center_crop: false
+  random_flip: true
+
+lora:
+  r: 32
+  lora_alpha: 64
+  lora_dropout: 0.05
+  target_modules: ["to_k", "to_q", "to_v", "to_out.0", "ff.net.0.proj", "ff.net.2"]
+
+training:
+  output_dir: "models/diffusion_rip_swimmer_lora"
+  train_batch_size: 2
+  gradient_accumulation_steps: 4
+  learning_rate: 8.0e-5
+  lr_scheduler: "cosine"
+  lr_warmup_steps: 50
+  max_train_steps: 800
+  checkpointing_steps: 200
+  mixed_precision: "fp16"
+  seed: 42
+  gradient_checkpointing: true
+  dataloader_num_workers: 0
+
+dataset:
+  data_dir: "data/diffusion_train"
+  metadata_file: "data/diffusion_train/metadata.jsonl"
+  max_rip_samples: 450
+  max_swimmer_samples: 450
+  max_composite_samples: 450
+
+inference:
+  scheduler: "dpmsolver++"
+  prompt_templates:
+    - "aerial drone photograph of a swimmer caught in the turbulent foam channel of an outgoing rip current, turquoise ocean water, white foam plumes, natural sunlight caustics, Hasselblad marine photography, 4k photorealistic, sharp focus"
+    - "top-down aerial view of two swimmers treading water in coastal surf zone near a dangerous dark rip current corridor, breaking wave crests, realistic human body anatomy, natural water displacement, high quality photography"
+    - "overhead drone view of an ocean beach surf zone with a prominent foamy rip current neck pulling seaward, swimmer nearby with subtle wake ripples, photorealistic ocean optics, natural water lighting"
+    - "drone perspective of a person swimming freestyle in deep ocean water adjacent to a foamy rip current plume, clear coastal water caustics, realistic subsurface refraction, crisp marine details"
+    - "aerial view of breaking beach waves with a foamy rip current head extending outward into deep water, swimmer floating near the current boundary, natural marine lighting, high resolution"
+  negative_prompt: "cartoon, 3d render, illustration, drawing, painting, bad anatomy, deformed swimmer, floating cutout, sticker effect, plastic skin, blurry, low quality, unnatural water, fake ocean, bad perspective, watermark, extra limbs, missing limbs, duplicated bodies, CGI"
+  guidance_scale: 7.0
+  num_inference_steps: 40

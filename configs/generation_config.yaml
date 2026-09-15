@@ -1,0 +1,107 @@
+# ═══════════════════════════════════════════════════════════════════
+# RipVIS Synthetic Dataset Generation — Master Configuration
+# ═══════════════════════════════════════════════════════════════════
+
+# ─── Data Paths ────────────────────────────────────────────────────
+paths:
+  raw_dir:         "data/raw"          # Real beach frames
+  mask_dir:        "data/masks"        # Binary masks (255=rip, 0=background)
+  samples_dir:     "data/samples"      # Downloaded HuggingFace samples
+  synthetic_dir:   "data/synthetic"    # Generated synthetic outputs
+  annotations_dir: "data/annotations" # COCO JSON outputs
+  models_cache:    "models/"           # Downloaded model weights
+
+# ─── HuggingFace Dataset ───────────────────────────────────────────
+huggingface:
+  dataset_name: "Irikos/RipVIS"
+  split: "train"
+  n_samples: 50                        # Number of real samples to download
+  streaming: true                      # Stream without full download
+
+# ─── Diffusion Model ───────────────────────────────────────────────
+diffusion:
+  model_id: "stabilityai/stable-diffusion-2-inpainting"
+  device: "auto"                       # "cuda", "cpu", or "auto"
+  dtype: "float16"                     # "float16" (GPU) or "float32" (CPU)
+
+  # Generation parameters
+  num_inference_steps: 30
+  guidance_scale: 7.5
+  strength: 0.85                       # How much to repaint (0=nothing, 1=full)
+
+  # Rip current prompts
+  positive_prompt: >
+    rip current, turbulent water flowing outward from the beach into the sea,
+    white foam channels, sediment discoloration, narrow dark water corridor,
+    beach safety hazard, realistic ocean photography, high quality
+  negative_prompt: >
+    cartoon, painting, blurry, low quality, text, watermark,
+    calm water, flat sea, no waves
+
+  # Image size (must be divisible by 8)
+  image_width: 512
+  image_height: 512
+
+  # Batch generation
+  batch_size: 1
+  n_images_per_mask: 3                 # Generate N variants per mask
+
+# ─── Imprinting Parameters ─────────────────────────────────────────
+imprinting:
+  # Geometric augmentations applied to the rip current before pasting
+  augmentations:
+    horizontal_flip: true
+    scale_range: [0.7, 1.3]           # Scale factor range
+    rotation_range: [-15, 15]         # Degrees
+    brightness_jitter: 0.2
+    contrast_jitter: 0.1
+
+  # Blending method
+  blend_method: "poisson"             # "poisson" | "alpha" | "gaussian_feather"
+  feather_radius: 15                  # Pixels for edge feathering (alpha blend)
+
+  n_augmentations_per_source: 5       # Number of composites per source pair
+
+# ─── Combined Pipeline ─────────────────────────────────────────────
+pipeline:
+  mode: "combined"                    # "imprint_only" | "diffusion_only" | "combined"
+  imprint_first: true                 # In combined mode: imprint then diffuse
+  diffusion_refinement_strength: 0.4  # Lower = less diffusion change in combined mode
+
+# ─── COCO Annotation ───────────────────────────────────────────────
+annotation:
+  dataset_name: "RipVIS-Synthetic"
+  categories:
+    - { id: 1, name: "rip_current", supercategory: "water_hazard" }
+    - { id: 2, name: "person",      supercategory: "human" }
+  license: "CC BY 4.0"
+  min_mask_area: 500                  # Minimum pixels — skip tiny masks
+
+# ─── People Imprinting & Refinement (Method 3) ──────────────────────
+people:
+  enabled: true
+  cutouts_dir: "data/person_cutouts"
+  max_people_per_image: 4
+  min_people_per_image: 1
+  min_scale: 0.08                     # Minimum size relative to image height
+  max_scale: 0.25                     # Maximum size relative to image height
+  perspective_scaling: true           # Scale people based on Y position (smaller near top/horizon)
+  refinement_strength: 0.35           # Diffusion inpainting strength around person boundary
+  prompts:
+    water: "swimmer in ocean water, body in waves, white water splash, photorealistic aerial beach photography"
+    beach: "person standing on beach sand, realistic shadow, photorealistic"
+
+# ─── Evaluation ────────────────────────────────────────────────────
+evaluation:
+  compute_fid: true
+  fid_n_samples: 200
+  compute_lpips: true
+  save_comparison_grid: true
+  comparison_grid_n: 16              # Images in comparison grid
+
+# ─── Logging ───────────────────────────────────────────────────────
+logging:
+  level: "INFO"
+  save_log: true
+  log_file: "logs/generation.log"
+

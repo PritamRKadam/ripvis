@@ -1,0 +1,48 @@
+# ═══════════════════════════════════════════════════════════════════
+# RipVIS Diverse Synthetic Dataset Generation Config
+# ═══════════════════════════════════════════════════════════════════
+
+# ─── Data Paths ────────────────────────────────────────────────────
+paths:
+  raw_dir:         "data/real_ripvis/train"        # Use real training frames as backgrounds
+  mask_dir:        "data/real_ripvis/train/masks"  # Reconstructed masks
+  samples_dir:     "data/real_ripvis/train"        # Source image/mask pairs
+  synthetic_dir:   "data/synthetic_diverse"        # Diverse synthetic outputs
+  annotations_dir: "data/annotations_diverse"      # Diverse COCO JSON outputs
+  models_cache:    "models/"
+
+# ─── HuggingFace Dataset ───────────────────────────────────────────
+huggingface:
+  dataset_name: "Irikos/RipVIS"
+  split: "train"
+  n_samples: 50
+  streaming: true
+
+# ─── Imprinting Parameters ─────────────────────────────────────────
+imprinting:
+  augmentations:
+    horizontal_flip: true
+    scale_range: [0.5, 1.5]           # Expanded range for size diversity
+    rotation_range: [-30, 30]         # Expanded range for angle diversity
+    brightness_jitter: 0.3            # Increased brightness jitter
+    contrast_jitter: 0.2              # Increased contrast jitter
+
+  blend_method: "poisson"
+  feather_radius: 15
+  n_augmentations_per_source: 1       # Generate 1 composite per source pair
+  max_sources: 1500                   # Limit to 1500 sources for fast generation (under 2 minutes)
+  target_size: [640, 640]             # Resize to 640x640 for extremely fast Poisson blending
+
+# ─── Combined/Imprint Only Pipeline ────────────────────────────────
+pipeline:
+  mode: "imprint_only"                # Fast imprinting on the large dataset
+  imprint_first: true
+  diffusion_refinement_strength: 0.4
+
+# ─── COCO Annotation ───────────────────────────────────────────────
+annotation:
+  dataset_name: "RipVIS-Synthetic-Diverse"
+  category_id: 1
+  category_name: "rip_current"
+  license: "CC BY 4.0"
+  min_mask_area: 500

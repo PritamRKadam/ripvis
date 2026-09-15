@@ -1,0 +1,42 @@
+# ─── Core ─────────────────────────────────────────────────
+numpy>=1.24.0
+Pillow>=10.0.0
+opencv-python>=4.8.0
+scipy>=1.11.0
+scikit-image>=0.21.0
+tqdm>=4.66.0
+PyYAML>=6.0
+
+# ─── PyTorch (install separately for your CUDA version) ───
+# CPU:   pip install torch torchvision
+# CUDA 11.8: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu118
+# CUDA 12.1: pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121
+torch>=2.0.0
+torchvision>=0.15.0
+
+# ─── HuggingFace Diffusers (Stable Diffusion) ─────────────
+diffusers>=0.27.0
+transformers>=4.39.0
+accelerate>=0.27.0
+safetensors>=0.4.0
+huggingface_hub>=0.21.0
+datasets>=2.18.0
+
+# ─── xformers (optional, speeds up diffusion on CUDA) ─────
+# xformers>=0.0.24  # Uncomment if you have a CUDA GPU
+
+# ─── COCO tools ───────────────────────────────────────────
+pycocotools>=2.0.7
+
+# ─── Evaluation ───────────────────────────────────────────
+torch-fidelity>=0.3.0       # FID computation
+lpips>=0.1.4                # Perceptual similarity
+
+# ─── Notebooks ────────────────────────────────────────────
+jupyter>=1.0.0
+matplotlib>=3.7.0
+seaborn>=0.13.0
+
+# ─── Utilities ────────────────────────────────────────────
+requests>=2.31.0
+pathlib2>=2.3.7

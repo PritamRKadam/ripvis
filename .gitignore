@@ -1,0 +1,45 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
+
+# RipVIS generated outputs and datasets
+data/
+runs/
+models/
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.onnx
+*.mp4
+*.ogv
+*.avi
+*.mov
+
+# Test / coverage
+.pytest_cache/
+.coverage
+htmlcov/
